@@ -1,0 +1,40 @@
+body {
+    display:grid;
+    grid-template-columns: repeat(2, 6rem);  
+         /* create grid of 2 columns for where the cards will go  */
+    grid-template-rows: 8rem 3rem 8rem;
+    justify-content: center;
+    padding-top: 50px;
+    gap: 10px
+}
+
+
+.cards {
+    height:100%;
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    border-radius: 10px
+}
+
+
+.text {
+    grid-column: span 2;
+    align
+}
+
+
+/* .computer-deck {
+    height: 100px;
+    width: 50px;
+    border-radius: 20px;
+}
+
+.computer-deck {
+    height: 100px;
+    width: 50px;
+    border-radius: 20px;
+} */
