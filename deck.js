@@ -2,15 +2,21 @@
 //OOP 
 const SUITS = ['♥','♦','♠', '♣'] //static global variable so it can be in all caps
 const VALUES = ['A','2', '3', '4','5','6','7','8', '9','10','J','Q','K']
-const masterDeck = []
+let masterDeck = []
 const mixedDeck = []
 console.log(masterDeck)
+
+function resetDeck(){
+    masterDeck.splice(0,masterDeck.length)
+    mixedDeck.splice(0,mixedDeck.length)    //
+    
+}
 
 
 
 //use two for loops
 function createDeck (){
-    masterDeck =[] 
+    // how to delete elements from an array  . could splice 
     SUITS.flatMap(
         (suit) => { 
             VALUES.map(
@@ -43,13 +49,16 @@ function shuffleDeck(){
 }
 
 function startGame(){    ///this will go at bottom 
+resetDeck()
 createDeck()
-mixedDeck = shuffleDeck() 
+mixedDeck.push(...shuffleDeck()) //spread operator pushes new shuffleDeck into mixedDeck
 console.log(mixedDeck) 
 
 }
 
+//can create function that resets the deck, to reset both decks. 
 
+startGame()
 
 
 class CardDeck {
