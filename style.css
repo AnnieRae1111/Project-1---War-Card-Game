@@ -17,13 +17,13 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 35px;
-    border-radius: 10px
+    border-radius: 10px;
 }
 
 
 .text {
     grid-column: span 2;
-    align
+
 }
 
 

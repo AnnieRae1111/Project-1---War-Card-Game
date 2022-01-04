@@ -28,8 +28,9 @@ HTML/CSS
     //let scorecore = 
     // create an array for the suits and the cardValues and combine them(use array.concat?)
 //write  a function that shuffles the deck and turns over a card when the deck is clicked by player 
-//write a function that takes one card awway from the deck when the deck is clicked by that player . 
-    //each player starts with 26 cards, each time they click, the deck is reduced by one
+    //this function should also decrement the deck the player has 
+
+//start game function: needs to include shuffling and splitting the deck into two piles of 26 cards 
 //write a function that checks which card is higher aka who won the round 
 //write a function for displaying  which player won for that round 
     //if playerOne's card is higher than computer, playerOne wins that round 
@@ -42,3 +43,7 @@ HTML/CSS
 */
 
 
+//write functin to split the deck /reset the deck 
+
+player1cards =[]
+player2cards=[]
