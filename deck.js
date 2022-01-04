@@ -48,18 +48,10 @@ createDeck()
 // console.log(shuffleTheDeck())
 // //---------THIS WORKS----------//
 
-// function shuffleTheDeck(){
-//     let shuffleDeck = [...masterDeck]
-//     for(let i = shuffleDeck.length - 1; i>0; i--){
-//         let j = Math.floor(Math.random()* (i +1))
-//         [shuffleDeck[i], shuffleDeck[j]] = [shuffleDeck[j], shuffleDeck[i]]
-        
-//     }
-//     // console.log(shuffleDeck)
-// }
+
+let shuffleDeck = [...masterDeck]
 
 function shuffleTheDeck(){
-    let shuffleDeck = [...masterDeck]
     for(let i=0; i<shuffleDeck.length; i++){
         const tempCard= shuffleDeck[i];
         const randomIndex = Math.floor(Math.random() * 52);
@@ -73,20 +65,37 @@ function shuffleTheDeck(){
     }
 }
 
-
+console.log(shuffleDeck)
 console.log(shuffleTheDeck())
+
+
+
+function splitDecks(){
+const half = Math.ceil(shuffleDeck.length / 2);    
+player1cards.push(shuffleDeck.slice(0, half))
+player2cards.push(shuffleDeck.slice(-half))
+console.log(player1cards)
+console.log(player2cards)
+}
+
+splitDecks()
+
+
 
 
 
 function startGame(){    ///this will go at bottom 
 resetDeck()
 createDeck()
+shuffleTheDeck()
+splitTheDeck()
 mixedDeck.push(...shuffleDeck()) //spread operator pushes new shuffleDeck into mixedDeck
+
 console.log(mixedDeck) 
 
 }
 
 
-// startGame()
+startGame()
 
 

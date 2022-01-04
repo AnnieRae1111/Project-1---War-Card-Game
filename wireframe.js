@@ -45,5 +45,15 @@ HTML/CSS
 
 //write functin to split the deck /reset the deck 
 
-player1cards =[]
-player2cards=[]
+//---startGame Function--//
+// this function needs to include these functions: 
+//resetTheDeck()
+//createTheDeck()
+//shuffleTheDeck()
+//splitTheDeck()
+
+//splitTheDeck() 
+//needs to push the cards to the two player arrays when the Start button is clicked 
+
+//Need another function that is attached to each playerdeck, that 
+//flips over a card each turn. and also decrements the amount of cards in that deck
