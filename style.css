@@ -1,29 +1,77 @@
 body {
+    margin: 0;
     display:grid;
     grid-template-columns: repeat(2, 160px);  
          /* create grid of 2 columns for where the cards will go  */
-    grid-template-rows: 224px 48px 48px 224px;
+    grid-template-rows: 224px 48px 224px 48px;
+    gap: 10px;
     justify-content: center;
     padding-top: 50px;
-    gap: 10px;
+    
     
 }
 
-button {
-    grid-column: span 2 ;
-    padding: 2rem;
-    background-color: lightgreen;
-    border: 1px solid black;
+#container{
+display: flex;
+flex-direction: column;
+height: 100vh;
+justify-content: space-between;
+
+}
+
+.player1{
     display: flex;
+    height: 600px;
+    width: 500px;
+    justify-content: space-between;
+
+}
+
+.pile{
+    height:100%;
+    width: 40%;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+
+
+
+
+.player2{
+    display: flex;
+    height: 600px;
+    width: 500px;
+    justify-content: space-between;
+}
+
+
+.button{
+    display:flex;
+    height: 300px;
+    width: 500px;
     justify-content: center;
     align-items: center;
+}
+
+
+.start-button {
+    /* grid-column: span 2 ; */
+    height: 40%;
+    padding: 1rem;
+    background-color: lightgreen;
+    border: 1px solid black;
+  
+  
+ 
+    
 
 }
 
 
-.cards {
+.deck {
     height:100%;
-    width: 100%;
+    width: 40%;
     border: 1px solid black;
     display: flex;
     justify-content: center;
@@ -33,15 +81,26 @@ button {
     background-image: linear-gradient(to right, lightblue, blue);
 }
 
-.player-deck {
+.player2-deck {
     grid-column: span 2; 
     grid-row: span 3;
-    width: 50%;
+    width: 40%;
     height: 100%
 }
 
+.text-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+    height: 500px;
+}
+
+
 .text {
     grid-column: span 2;
+    justify-content:space-between;
+    align-items: center;
     
 
 }

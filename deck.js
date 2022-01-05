@@ -1,21 +1,43 @@
 //creat a class to hold the entire deck and it's functions. 
 //OOP 
+
+
+//player 1 = COMPUTER
+//player 2 = PERSON
+
+/*----- cached element references -----*/
+/*----- event listeners -----*/
+
+
+/*----- constants -----*/
 const SUITS = ['♥','♦','♠', '♣'] 
 const VALUES= ['A','2', '3', '4','5','6','7','8', '9','10','J','Q','K']
+
+/*----- app's state (variables) -----*/
 let masterDeck = []
 const mixedDeck = []
-console.log(masterDeck)
+// console.log(masterDeck)
 let player1cards =[]   //array for each player's deck of 26
-let player2cards=[]   //array for each player's deck of 26. Create a function that splits the deck into 
-                        //these two arrays 
+let player2cards=[]   //array for each player's deck of 26. Create a function that splits the deck into  //these two arrays 
+let player1CardsFlipped =[] //array for cards being pushed / clicked on / that turn over 
+let player2CardsFlipped=[]
+
+let startButton = document.querySelector("div .start-button")
+startButton.addEventListener('click', startGame)
+
+/*----- functions -----*/
 
 function resetDeck(){
     masterDeck.splice(0,masterDeck.length)
     mixedDeck.splice(0,mixedDeck.length)
+    // console.log(masterDeck)
+    // console.log(mixedDeck)
 }    //reseting the decks. Include this in startGame function so I always start with fresh deck)
 
+// resetDeck()
 
-function createDeck (){
+
+function createDeck(){
     SUITS.flatMap(
         (suit) => { 
             VALUES.map(     //mapping over suits and values and combining them all to one array
@@ -23,6 +45,7 @@ function createDeck (){
                     let card = value + suit
                     // console.log(card)
                     masterDeck.push(card) //(pushing each card, back to the masterDeck array)
+                    // console.log(masterDeck)
                 
                 }
             )
@@ -30,26 +53,10 @@ function createDeck (){
         }
     )
 }
-createDeck()
+// createDeck()
 
 
-// console.log(masterDeck)
-
-//make a class to render out the cards? 
-
-//---------THIS WORKS----------//
-// function shuffleTheDeck(){
-//     let shuffleDeck = [...masterDeck] //copying the masterDeck into the shuffleDeck
-//     let shuffledCards = shuffleDeck.sort(() => Math.random()-.5);
-//     // console.log(shuffleDeck)
-//     return shuffledCards
-
-// }
-// console.log(shuffleTheDeck())
-// //---------THIS WORKS----------//
-
-
-let shuffleDeck = [...masterDeck]
+let shuffleDeck = [...masterDeck] //copying the masterDeck into the shuffleDeck, so we can then shuffle it. 
 
 function shuffleTheDeck(){
     for(let i=0; i<shuffleDeck.length; i++){
@@ -60,42 +67,86 @@ function shuffleTheDeck(){
         shuffleDeck[i]=shuffleDeck[randomIndex]
         shuffleDeck[randomIndex] = x
         shuffleDeck[randomIndex] = tempCard
-        console.log(shuffleDeck)
+        // console.log(shuffleDeck)how to check if this is working? 
 
     }
 }
 
-console.log(shuffleDeck)
-console.log(shuffleTheDeck())
-
+// shuffleTheDeck()
 
 
 function splitDecks(){
 const half = Math.ceil(shuffleDeck.length / 2);    
-player1cards.push(shuffleDeck.slice(0, half))
-player2cards.push(shuffleDeck.slice(-half))
-console.log(player1cards)
-console.log(player2cards)
+player1cards= (shuffleDeck.slice(0, half))
+player2cards= (shuffleDeck.slice(-half))
+// console.log(player1cards)
+// console.log(player2cards)
 }
 
-splitDecks()
+// splitDecks()
 
 
-
-
-
-function startGame(){    ///this will go at bottom 
+function startGame(){   //eventListner // Click start button // 
 resetDeck()
 createDeck()
 shuffleTheDeck()
-splitTheDeck()
-mixedDeck.push(...shuffleDeck()) //spread operator pushes new shuffleDeck into mixedDeck
+mixedDeck.push(...shuffleDeck) //spread operator pushes new shuffleDeck into mixedDeck
+splitDecks()
+// console.log(mixedDeck) 
+flipDeckPlayer(player1cards, player1CardsFlipped) // this will automatically fire 
 
-console.log(mixedDeck) 
 
+}
+startGame()
+
+function nextRound() {
+    flipDeckPlayer(player1cards, player1CardsFlipped)
+    //add functionality to hide this button after it's clicked 
+    //on click, set style to hidden or display none
 }
 
 
-startGame()
+function flipDeckPlayer(playerCards, playerCardsFlipped){
+    if (playerCards.length > 0){
+        playerCardsFlipped.unshift(playerCards[0])
+        playerCards.shift()
+        }
+        console.log(playerCards)
+        console.log(playerCardsFlipped, "playerCardsFlipped")
+    
+    }
+
+    
 
 
+// flipDeckPlayer(player2cards, player2CardsFlipped) = //click event for player2 (person) = in line 142
+
+
+player2Deck = document.querySelector(".player2-deck") 
+
+
+
+
+player2Deck.addEventListener('click',() => {
+     flipDeckPlayer(player2cards, player2CardsFlipped)
+})   
+// add this card to the html ... 
+
+
+
+// function checkCards(){
+//  if(player1CardsFlipped > player2CardsFlipped)
+//      document.querySelector("text").innerHTML = "Player 1 Wins This Round!"
+ 
+
+function checkCards(){
+    if(player1CardsFlipped[0] > player2CardsFlipped[0]){
+        document.querySelector(".text").innerHTML = '<strong>Player 1 Wins This Round</strong>'
+    }
+}
+
+//one event listener 
+
+function player1Turn(player){
+
+}
