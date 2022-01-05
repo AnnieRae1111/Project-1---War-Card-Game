@@ -27,14 +27,17 @@ justify-content: space-between;
 
 }
 
-.pile{
+/* .pile is the parent container for player2 cards that are flipped over. We can style .pile and it will affect how the cards look  */
+.pile{                 
+    display:flex;  
     height:100%;
     width: 40%;
     border: 1px solid;
     border-radius: 10px;
+    align-items: center;
+    justify-content: center ;
+    font-size: 50px;
 }
-
-
 
 
 
@@ -61,12 +64,18 @@ justify-content: space-between;
     padding: 1rem;
     background-color: lightgreen;
     border: 1px solid black;
+    border-radius: 10 px;
   
   
  
     
 
 }
+
+/* .player2-card-pile {
+    display:flex;
+} */
+
 
 
 .deck {

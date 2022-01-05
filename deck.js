@@ -22,8 +22,6 @@ let player2cards=[]   //array for each player's deck of 26. Create a function th
 let player1CardsFlipped =[] //array for cards being pushed / clicked on / that turn over 
 let player2CardsFlipped=[]
 
-let startButton = document.querySelector("div .start-button")
-startButton.addEventListener('click', startGame)
 
 /*----- functions -----*/
 
@@ -53,7 +51,7 @@ function createDeck(){
         }
     )
 }
-// createDeck()
+createDeck()
 
 
 let shuffleDeck = [...masterDeck] //copying the masterDeck into the shuffleDeck, so we can then shuffle it. 
@@ -72,7 +70,7 @@ function shuffleTheDeck(){
     }
 }
 
-// shuffleTheDeck()
+shuffleTheDeck()
 
 
 function splitDecks(){
@@ -83,7 +81,7 @@ player2cards= (shuffleDeck.slice(-half))
 // console.log(player2cards)
 }
 
-// splitDecks()
+splitDecks()
 
 
 function startGame(){   //eventListner // Click start button // 
@@ -94,6 +92,7 @@ mixedDeck.push(...shuffleDeck) //spread operator pushes new shuffleDeck into mix
 splitDecks()
 // console.log(mixedDeck) 
 flipDeckPlayer(player1cards, player1CardsFlipped) // this will automatically fire 
+// flipDeckPlayer1()
 
 
 }
@@ -105,6 +104,28 @@ function nextRound() {
     //on click, set style to hidden or display none
 }
 
+//----Not using these rewrote the generic version below---//
+// function flipDeckPlayer1(){
+//     if(player1cards.length >0) {
+//         player1CardsFlipped.unshift(player1cards[0])
+//         player1cards.shift()
+//     }
+//     console.log(player1cards)
+//     console.log(player1CardsFlipped,"player 1 cards flipped")
+// }
+
+// function flipDeckPlayer2(){
+//     if(player2cards.length >0) {
+//         player2CardsFlipped.unshift(player2cards[0])
+//         player2cards.shift()
+//     }
+//     console.log(player2cards)
+//     console.log(player2CardsFlipped,"player 2 cards flipped")
+// }
+//----Not using these rewrote the generic version below---//
+
+let playerCards = []
+let playerCardsFlipped = []
 
 function flipDeckPlayer(playerCards, playerCardsFlipped){
     if (playerCards.length > 0){
@@ -116,28 +137,11 @@ function flipDeckPlayer(playerCards, playerCardsFlipped){
     
     }
 
-    
 
+flipDeckPlayer(player1cards, player1CardsFlipped)
 
 // flipDeckPlayer(player2cards, player2CardsFlipped) = //click event for player2 (person) = in line 142
 
-
-player2Deck = document.querySelector(".player2-deck") 
-
-
-
-
-player2Deck.addEventListener('click',() => {
-     flipDeckPlayer(player2cards, player2CardsFlipped)
-})   
-// add this card to the html ... 
-
-
-
-// function checkCards(){
-//  if(player1CardsFlipped > player2CardsFlipped)
-//      document.querySelector("text").innerHTML = "Player 1 Wins This Round!"
- 
 
 function checkCards(){
     if(player1CardsFlipped[0] > player2CardsFlipped[0]){
@@ -150,3 +154,28 @@ function checkCards(){
 function player1Turn(player){
 
 }
+
+
+///---Event Listeners---///
+
+let startButton = document.querySelector("div .start-button")
+startButton.addEventListener('click', startGame)
+
+
+player1pile = document.querySelector(".player1-card-pile")
+player1pile.addEventListener("click", () => {
+
+})
+
+
+player2Deck = document.querySelector(".player2-deck") 
+player2Deck.addEventListener('click',() => {
+     flipDeckPlayer(player2cards, player2CardsFlipped)
+     console.log("click event player2 Deck")
+    document.querySelector(".player2-card-pile").innerHTML = player2CardsFlipped[0]
+    console.log(player2CardsFlipped)
+})   
+
+
+// add this card to the html ... 
+ 
