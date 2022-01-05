@@ -34,7 +34,7 @@ function resetDeck(){
 
 // resetDeck()
 
-
+let points = {}
 function createDeck(){
     SUITS.flatMap(
         (suit) => { 
@@ -44,7 +44,9 @@ function createDeck(){
                         value: VALUES[i],
                         suit: suit,
                         points: i+1
+                        // img: `https://deckofcards.api.com/static/img/${value[i]} ${suits[i]}`
                     }
+                    // console.log(points)
                     // console.log(card)
                     masterDeck.push(card) //(pushing each card, back to the masterDeck array)
 
@@ -101,8 +103,6 @@ player2cards= (shuffleDeck.slice(-half))
 
 // splitDecks()
 
-//need to create a way to seperate the suite and value in player1cards and player2cards so we can 
-///compare the value's in checkCard function 
 
 function startGame(){   //eventListner // Click start button // 
 resetDeck()
@@ -118,34 +118,7 @@ flipDeckPlayer(player1cards, player1CardsFlipped) // this will automatically fir
 }
 startGame()
 
-// function nextRound() {
-//     flipDeckPlayer(player1cards, player1CardsFlipped)
-//     //add functionality to hide this button after it's clicked 
-//     //on click, set style to hidden or display none
-// }
 
-//----Not using these rewrote the generic version below---//
-// function flipDeckPlayer1(){
-//     if(player1cards.length >0) {
-//         player1CardsFlipped.unshift(player1cards[0])
-//         player1cards.shift()
-//     }
-//     console.log(player1cards)
-//     console.log(player1CardsFlipped,"player 1 cards flipped")
-// }
-
-// function flipDeckPlayer2(){
-//     if(player2cards.length >0) {
-//         player2CardsFlipped.unshift(player2cards[0])
-//         player2cards.shift()
-//     }
-//     console.log(player2cards)
-//     console.log(player2CardsFlipped,"player 2 cards flipped")
-// }
-//----Not using these rewrote the generic version below---//
-
-let playerCards = []
-let playerCardsFlipped = []
 
 function flipDeckPlayer(playerCards, playerCardsFlipped){
     if (playerCards.length > 0){
@@ -165,21 +138,28 @@ function flipDeckPlayer(playerCards, playerCardsFlipped){
 
 function checkCards(){
     if(player1CardsFlipped[0].points > player2CardsFlipped[0].points){
-        console.log("player 1 wins")
-        //push player2cards flipped to player1cards
-        const winnerText = document.querySelector(".text-container .text")
-        winnerText = "Player 1 Wins This Round!"
-        div.append(winnerText)
-        // document.querySelector(".text-container .text").innerHTML += '<strong>Player 1 Wins This Round</strong>'
-    }   else {
-        console.log("player 2 wins")
+        //push player2cardsflipped to player1cardsFlipped
+        // let winnerText = document.querySelector(".text-container .text")
+        // winnerText = "Player 1 Wins This Round!"
+        // div.append(winnerText)
+        document.querySelector(".text-container .text").innerHTML += '<strong>Player 1 Wins This Round</strong>'
+    // }   else {
+        // let winnerTwoText = document.querySelector(".text-container. .winner-two-text")
+        // winnerTwoText = "Player 2 Wins This Round!"
+        // div.append(winnerTwoText)
+        // // console.log("player 2 wins")
+        // // document.querySelector(".text-container .text").innerHTML += '<strong>Player 2 Wins This Round</strong>'
+
+    // } 
+
+
+    } else {
         document.querySelector(".text-container .text").innerHTML += '<strong>Player 2 Wins This Round</strong>'
-
-    } 
-
-
 }
-checkCards()
+// checkCards()
+}
+
+
 
 
 
@@ -201,18 +181,13 @@ startButton.addEventListener('click' , () =>{
 // })
 
 
-//-click event for turning player 2 card over--//
+//-click event for turning player 2 card over--// 
 player2Deck = document.querySelector(".player2-deck") 
 player2Deck.addEventListener('click',() => {
      flipDeckPlayer(player2cards, player2CardsFlipped)
      console.log("click event player2 Deck")
     document.querySelector(".player2-card-pile").innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` // this is accessing the value and suit property of the object we created in createDeck function so we could compare points 
-    console.log(player2CardsFlipped)
-    flipDeckPlayer(player1cards, player1CardsFlipped)
-    console.log(player1CardsFlipped, "player/computer 1 cards flipped")
-    console.log(player2CardsFlipped,"player 2 cards flipped")
-     checkCards
-
+     checkCards()
 
     // setTimeout(()=> {
     //     document.querySelector(".player1-card-pile").innerHTML = player1CardsFlipped[0]
@@ -221,6 +196,3 @@ player2Deck.addEventListener('click',() => {
 
     // console.log("player 1 is going again")
 })   
-
-
-

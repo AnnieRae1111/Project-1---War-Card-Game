@@ -50,17 +50,23 @@ HTML/CSS
     //if playeOne's card is lower than computer :
         //Display text: Player 2 Wins This Round
         // push() player1CardsFlipped into player2CardsFlipped array
-    //if both players drew the same card it is null : Display text: IT's A DRAW - Player 1 starts again 
-            //envoke flipDeckPlayer(player1cards, player1CardsFlipped), 
+    //if both players drew the same card It's WAR: Display text: DRAW :Player 1 goes again
+        //envoke flipDeckPlayer(player1cards, player1CardsFlipped), 
+        // then player 2 flips cards 
+        //if player1 card is higher, player 1 takes all four cards (2 for each round that was just played)
+        // push player2cardsflipped[0][1] to player1 cards. 
  
 
+//write a function to start the game aka deal : deal()
+    //this function needs to include : 
+        createDeck()
+        resetDeck()
+        shuffTheDeck()
+        splitDecks()
+        flipDeckPlayer(player1cards, player1CardsFlipped) --- this iniates the computers/player 1's turn 
 
-
-
-
-//start game function: needs to include shuffling and splitting the deck into two piles of 26 cards 
-// player1 clicks their deck to turn over a card 
-// player 2 clicks their deck to turn over a card 
+//each turn only allows one click 
+//write a function for once player2
 
 
 push to the bottom .push() the cards of the player who looses each round, to the array of pile for the other player 
@@ -120,3 +126,13 @@ push to the bottom .push() the cards of the player who looses each round, to the
 
 //Next Round button()  
     // flipDeckPlayer(player1cards, player1CardsFlipped)
+
+
+    //add actual card images
+  deck.push({
+      suit: suits[i]
+      rank: ranks[x]
+      img: (ULR from API)
+
+
+      })
