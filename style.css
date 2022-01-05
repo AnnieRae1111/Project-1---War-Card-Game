@@ -58,7 +58,7 @@ justify-content: space-between;
 }
 
 
-.deal-button {
+.start-button {
     /* grid-column: span 2 ; */
     height: 40%;
     width: 40%;
@@ -100,6 +100,15 @@ justify-content: space-between;
     align-items: center;
     width: 500px;
     height: 500px;
+}
+
+.header{
+    width: 500px;
+    text-align: center;
+    font-size: 50px;
+    background: -webkit-radial-gradient(pink, purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 

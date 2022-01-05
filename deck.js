@@ -16,7 +16,7 @@ const VALUES= ['A','2', '3', '4','5','6','7','8', '9','10','J','Q','K']
 /*----- app's state (variables) -----*/
 let masterDeck = []
 const mixedDeck = []
-// console.log(masterDeck)
+console.log(masterDeck)
 let player1cards =[]   //array for each player's deck of 26
 let player2cards=[]   //array for each player's deck of 26. Create a function that splits the deck into  //these two arrays 
 let player1CardsFlipped =[] //array for cards being pushed / clicked on / that turn over 
@@ -38,20 +38,38 @@ function resetDeck(){
 function createDeck(){
     SUITS.flatMap(
         (suit) => { 
-            VALUES.map(     //mapping over suits and values and combining them all to one array
-                (value) => {
-                    let card = value + suit
+            for(i=0; i< VALUES.length; i++){
+                     
+                    let card = {
+                        value: VALUES[i],
+                        suit: suit,
+                        points: i+1
+                    }
                     // console.log(card)
                     masterDeck.push(card) //(pushing each card, back to the masterDeck array)
-                    // console.log(masterDeck)
+
+            }
+
+            // VALUES.map(     //mapping over suits and values and combining them all to one array
+            //     (value) => {
+            //         // let card = value + suit
+            //         let card = {
+            //             value: value,
+            //             card: suit,
+            //             points: value[i]
+            //         }
+            //         // console.log(card)
+            //         masterDeck.push(card) //(pushing each card, back to the masterDeck array)
+            //         // console.log(masterDeck)
                 
-                }
-            )
+            //     }
+            // )
     
         }
     )
 }
 createDeck()
+
 
 
 let shuffleDeck = [...masterDeck] //copying the masterDeck into the shuffleDeck, so we can then shuffle it. 
@@ -83,8 +101,10 @@ player2cards= (shuffleDeck.slice(-half))
 
 // splitDecks()
 
+//need to create a way to seperate the suite and value in player1cards and player2cards so we can 
+///compare the value's in checkCard function 
 
-function deal(){   //eventListner // Click start button // 
+function startGame(){   //eventListner // Click start button // 
 resetDeck()
 createDeck()
 shuffleTheDeck()
@@ -96,7 +116,7 @@ flipDeckPlayer(player1cards, player1CardsFlipped) // this will automatically fir
 
 
 }
-deal()
+startGame()
 
 // function nextRound() {
 //     flipDeckPlayer(player1cards, player1CardsFlipped)
@@ -144,34 +164,41 @@ function flipDeckPlayer(playerCards, playerCardsFlipped){
 
 
 function checkCards(){
-    if(player1CardsFlipped[0] > player2CardsFlipped[0]){
-        document.querySelector(".text").innerHTML = '<strong>Player 1 Wins This Round</strong>'
-    }
+    if(player1CardsFlipped[0].points > player2CardsFlipped[0].points){
+        console.log("player 1 wins")
+        //push player2cards flipped to player1cards
+        const winnerText = document.querySelector(".text-container .text")
+        winnerText = "Player 1 Wins This Round!"
+        div.append(winnerText)
+        // document.querySelector(".text-container .text").innerHTML += '<strong>Player 1 Wins This Round</strong>'
+    }   else {
+        console.log("player 2 wins")
+        document.querySelector(".text-container .text").innerHTML += '<strong>Player 2 Wins This Round</strong>'
+
+    } 
+
+
 }
+checkCards()
 
-//one event listener 
 
-function player1Turn(player){
-
-}
 
 
 ///---Event Listeners---///
 
-let dealButton = document.querySelector("div .deal-button")
-dealButton.addEventListener('click', deal)
-
-dealButton.addEventListener('click' , () =>{
-    deal
-    document.querySelector(".player1-card-pile").innerHTML = player1CardsFlipped[0]
+let startButton = document.querySelector("div .start-button")
+startButton.addEventListener('click' , () =>{
+    startGame
+    document.querySelector(".player1-card-pile").innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
 })
 
+//use interpolation to access key's 
 
-player1pile = document.querySelector(".player1-card-pile")
-player1pile.addEventListener("click", () => {
 
-})
+// player1pile = document.querySelector(".player1-card-pile")
+// player1pile.addEventListener("click", () => {
 
+// })
 
 
 //-click event for turning player 2 card over--//
@@ -179,10 +206,21 @@ player2Deck = document.querySelector(".player2-deck")
 player2Deck.addEventListener('click',() => {
      flipDeckPlayer(player2cards, player2CardsFlipped)
      console.log("click event player2 Deck")
-    document.querySelector(".player2-card-pile").innerHTML = player2CardsFlipped[0]
+    document.querySelector(".player2-card-pile").innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` // this is accessing the value and suit property of the object we created in createDeck function so we could compare points 
     console.log(player2CardsFlipped)
     flipDeckPlayer(player1cards, player1CardsFlipped)
+    console.log(player1CardsFlipped, "player/computer 1 cards flipped")
+    console.log(player2CardsFlipped,"player 2 cards flipped")
+     checkCards
+
+
+    // setTimeout(()=> {
+    //     document.querySelector(".player1-card-pile").innerHTML = player1CardsFlipped[0]
+    
+    // } ,1000)
+
     // console.log("player 1 is going again")
 })   
+
 
 
