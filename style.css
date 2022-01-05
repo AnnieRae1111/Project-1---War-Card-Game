@@ -58,24 +58,21 @@ justify-content: space-between;
 }
 
 
-.start-button {
+.deal-button {
     /* grid-column: span 2 ; */
     height: 40%;
+    width: 40%;
     padding: 1rem;
     background-color: lightgreen;
     border: 1px solid black;
-    border-radius: 10 px;
+    border-radius: 10px;
+    
   
   
  
     
 
 }
-
-/* .player2-card-pile {
-    display:flex;
-} */
-
 
 
 .deck {
@@ -114,15 +111,3 @@ justify-content: space-between;
 
 }
 
-
-/* .computer-deck {
-    height: 100px;
-    width: 50px;
-    border-radius: 20px;
-}
-
-.computer-deck {
-    height: 100px;
-    width: 50px;
-    border-radius: 20px;
-} */

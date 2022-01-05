@@ -19,29 +19,51 @@ HTML/CSS
 
 /*-------- //Pseudo Code:// --------/* 
 
-//Will need to render the card deck/create the cards 
 //define constant and state variables in a global scope 
     //const suits = ["hearts", "spades","daimonds", "clubs"]
     //const cardValues =[all the card values ]
     //let playerOne =
     //let computer =
     //let score = 
-    // create an array for the suits and the cardValues and combine them(use array.concat?)
-//write  a function that shuffles the deck and turns over a card when the deck is clicked by player 
+    // create an array for the suits and the cardValues and combine them. .flatMap()
+
+    FUNCTIONS: 
+//write a function to create the deck : createDeck
+//write a function that shuffles the deck : shuffleTheDeck
+//write a function that splits the deck : splitDeck
+    //this function will split the deck into two arrays:  player1cards [] and player2cards[]
     //this function should also decrement the deck the player has 
+
+//write a function for when the deck is clicked for player1 (computer) a card is flipped over and shown in the pile for player 1
+//write a function for when the deck is clicked for player2 (computer) a card is flipped overshown in the pile for player 2
+//this function will also decrement the player deck by 1 
+    //flipDeckPlayer()
+
+ //write a function that checks which card is higher aka who won the round 
+    //// write a function for when both players draw the same card, the round is null , it's a draw and they stay where they are 
+        //Display text that says it's a draw 
+        
+//write a function to that checks which card is higher 
+    //if playerOne's card is higher than computer :
+            //Display text : Player 1 Wins This Round 
+            // .push() player2CardsFlipped into player1CardsFlipped array
+    //if playeOne's card is lower than computer :
+        //Display text: Player 2 Wins This Round
+        // push() player1CardsFlipped into player2CardsFlipped array
+    //if both players drew the same card it is null : Display text: IT's A DRAW - Player 1 starts again 
+            //envoke flipDeckPlayer(player1cards, player1CardsFlipped), 
+ 
+
+
+
+
 
 //start game function: needs to include shuffling and splitting the deck into two piles of 26 cards 
 // player1 clicks their deck to turn over a card 
 // player 2 clicks their deck to turn over a card 
-//write a function that checks which card is higher aka who won the round 
-    //// write a function for when both players draw the same card, the round is null , it's a draw and they stay where they are 
-        //Display text that says it's a draw 
-//write a function for displaying  which player won for that round 
-    //if playerOne's card is higher than computer, playerOne wins that round 
-    //if playeOne's card is lower thancomputer, playerOne lost that round 
-    //if computer card is higher than playerOne , computer wins that round 
-    //if computer card is lower than playerOne, computer lost that round 
-        //push to the top (.unshift) card of the player who lost to the flipped deck pile of the player who won the round
+
+
+push to the bottom .push() the cards of the player who looses each round, to the array of pile for the other player 
 //write a function to declare who won the entire game when all the cards are flipped and determines which player has the most cards  
         //display text: Player _ Wins!!
 

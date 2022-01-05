@@ -81,10 +81,10 @@ player2cards= (shuffleDeck.slice(-half))
 // console.log(player2cards)
 }
 
-splitDecks()
+// splitDecks()
 
 
-function startGame(){   //eventListner // Click start button // 
+function deal(){   //eventListner // Click start button // 
 resetDeck()
 createDeck()
 shuffleTheDeck()
@@ -96,13 +96,13 @@ flipDeckPlayer(player1cards, player1CardsFlipped) // this will automatically fir
 
 
 }
-startGame()
+deal()
 
-function nextRound() {
-    flipDeckPlayer(player1cards, player1CardsFlipped)
-    //add functionality to hide this button after it's clicked 
-    //on click, set style to hidden or display none
-}
+// function nextRound() {
+//     flipDeckPlayer(player1cards, player1CardsFlipped)
+//     //add functionality to hide this button after it's clicked 
+//     //on click, set style to hidden or display none
+// }
 
 //----Not using these rewrote the generic version below---//
 // function flipDeckPlayer1(){
@@ -138,7 +138,7 @@ function flipDeckPlayer(playerCards, playerCardsFlipped){
     }
 
 
-flipDeckPlayer(player1cards, player1CardsFlipped)
+// flipDeckPlayer(player1cards, player1CardsFlipped)
 
 // flipDeckPlayer(player2cards, player2CardsFlipped) = //click event for player2 (person) = in line 142
 
@@ -158,8 +158,13 @@ function player1Turn(player){
 
 ///---Event Listeners---///
 
-let startButton = document.querySelector("div .start-button")
-startButton.addEventListener('click', startGame)
+let dealButton = document.querySelector("div .deal-button")
+dealButton.addEventListener('click', deal)
+
+dealButton.addEventListener('click' , () =>{
+    deal
+    document.querySelector(".player1-card-pile").innerHTML = player1CardsFlipped[0]
+})
 
 
 player1pile = document.querySelector(".player1-card-pile")
@@ -168,14 +173,16 @@ player1pile.addEventListener("click", () => {
 })
 
 
+
+//-click event for turning player 2 card over--//
 player2Deck = document.querySelector(".player2-deck") 
 player2Deck.addEventListener('click',() => {
      flipDeckPlayer(player2cards, player2CardsFlipped)
      console.log("click event player2 Deck")
     document.querySelector(".player2-card-pile").innerHTML = player2CardsFlipped[0]
     console.log(player2CardsFlipped)
+    flipDeckPlayer(player1cards, player1CardsFlipped)
+    // console.log("player 1 is going again")
 })   
 
 
-// add this card to the html ... 
- 
