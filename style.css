@@ -109,8 +109,21 @@ justify-content: space-between;
  
 }
 
+.declare-game-winner1, .declare-game-winner2{
+    width: 500px;
+    height: 50%;
+    font-size: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(0, 105, 128);
+    align-items: center;
+    justify-content: space-between;
 
-.winner-one-text{
+
+}
+
+
+.winner-one-text, .winner-two-text, .draw-text{
     width: 500px;
     height: 50%;
     font-size: 25px;
@@ -122,7 +135,7 @@ justify-content: space-between;
 
 }
 
-.winner-two-text{
+/* .winner-two-text{
     width: 500px;
     height: 50%;
     font-size: 25px;
@@ -131,7 +144,9 @@ justify-content: space-between;
     color: purple;
     align-items: center;
     justify-content: space-between;
-}
+} */
+
+
 
 .winner-one-text .go-again{
     color: black
@@ -140,33 +155,12 @@ justify-content: space-between;
 .header{
     width: 500px;
     text-align: center;
-   
     font-size: 30px;
     background: -webkit-radial-gradient(pink, purple);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* #game-winner-text{
-    display:flex;
-    flex-direction: column;
-    width: 500px;
-    height: 500px;
-    justify-content: space-around;
-    /* align-items: center */
-/* } */ 
-
-
-/* .declare-game-winner1, .declare-game-winner2{
-    width: 50%;
-    height:50%;
-    display: inline;
-    font-size: 30px;
-    background: -webkit-radial-gradient(pink, purple);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-}  */
 
 .hide{
     display: none;
