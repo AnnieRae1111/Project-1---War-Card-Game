@@ -39,7 +39,9 @@ justify-content: space-between;
     font-size: 50px;
 }
 
-
+/* .card-value{
+    display: none;
+} */
 
 .player2{
     display: flex;
@@ -47,6 +49,10 @@ justify-content: space-between;
     width: 500px;
     justify-content: space-between;
 }
+
+/* .player2-card-pile.pile {
+    display: none;
+} */
 
 
 .button{

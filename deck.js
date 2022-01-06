@@ -15,6 +15,7 @@ const VALUES= ['A','2', '3', '4','5','6','7','8', '9','10','J','Q','K']
 
 /*----- app's state (variables) -----*/
 let masterDeck = []
+let shuffleDeck = []
 const mixedDeck = []
 console.log(masterDeck)
 let player1cards =[]   //array for each player's deck of 26
@@ -70,13 +71,15 @@ function createDeck(){
         }
     )
 }
-createDeck()
+// createDeck()
 
 
 
-let shuffleDeck = [...masterDeck] //copying the masterDeck into the shuffleDeck, so we can then shuffle it. 
+ //copying the masterDeck into the shuffleDeck, so we can then shuffle it. 
+
 
 function shuffleTheDeck(){
+    shuffleDeck = [...masterDeck]
     for(let i=0; i<shuffleDeck.length; i++){
         const tempCard= shuffleDeck[i];
         const randomIndex = Math.floor(Math.random() * 52);
@@ -90,7 +93,7 @@ function shuffleTheDeck(){
     }
 }
 
-shuffleTheDeck()
+// shuffleTheDeck()
 
 
 function splitDecks(){
@@ -111,22 +114,23 @@ shuffleTheDeck()
 mixedDeck.push(...shuffleDeck) //spread operator pushes new shuffleDeck into mixedDeck
 splitDecks()
 // console.log(mixedDeck) 
-flipDeckPlayer(player1cards, player1CardsFlipped) // this will automatically fire 
+flipDeckPlayer(player1cards, player1CardsFlipped, "player1") // this will automatically fire 
 // flipDeckPlayer1()
 
 
 }
-startGame()
+// startGame()
 
 
 
-function flipDeckPlayer(playerCards, playerCardsFlipped){
+function flipDeckPlayer(playerCards, playerCardsFlipped, player){
     if (playerCards.length > 0){
         playerCardsFlipped.unshift(playerCards[0])
         playerCards.shift()
+        document.querySelector(`.${player}-deck`).innerHTML = playerCards.length
         }
-        console.log(playerCards)
-        console.log(playerCardsFlipped, "playerCardsFlipped")
+        // console.log(playerCards)
+        console.log(playerCardsFlipped, player)
     
     }
 
@@ -134,42 +138,48 @@ function flipDeckPlayer(playerCards, playerCardsFlipped){
 // flipDeckPlayer(player1cards, player1CardsFlipped)
 
 // flipDeckPlayer(player2cards, player2CardsFlipped) = //click event for player2 (person) = in line 142
+let winner = ""
 
 
 function checkCards(){
     if(player1CardsFlipped[0].points > player2CardsFlipped[0].points){
-        //push player2cardsflipped to player1cardsFlipped
-        // let winnerText = document.querySelector(".text-container .text")
-        // winnerText = "Player 1 Wins This Round!"
-        // div.append(winnerText)
-        document.querySelector(".text-container .text").innerHTML += '<strong>Player 1 Wins This Round</strong>'
-    // }   else {
-        // let winnerTwoText = document.querySelector(".text-container. .winner-two-text")
-        // winnerTwoText = "Player 2 Wins This Round!"
-        // div.append(winnerTwoText)
-        // // console.log("player 2 wins")
-        // // document.querySelector(".text-container .text").innerHTML += '<strong>Player 2 Wins This Round</strong>'
+        player1CardsFlipped.push(player2CardsFlipped[0])
+       
+        // document.querySelector(".player1-deck").innerHTML = player1cards.length
+        document.querySelector(".text-container .text").innerHTML += '<strong>Player 1 Wins This Round<br>Player 1 Go Again!</strong>'
+        winner = "player1" 
+        setTimeout(()=>{
+        document.querySelector(".text-container .text").innerHTML = ""   
+        }, 3000)
+        
+    } else if(player2CardsFlipped[0].points > player1CardsFlipped[0].points) {
+        player2CardsFlipped.push(player1CardsFlipped[0])
+        document.querySelector(".winner-two-text").innerHTML += '<strong>Player 2 Wins This Round<br>Player 2 Go Again!</strong>'
 
-    // } 
+        winner = "player2"
+        setTimeout(() =>{
+            document.querySelector(".winner-two-text").innerHTML = ""
+            
 
+        }, 3000)
+      
+    }
 
-    } else {
-        document.querySelector(".text-container .text").innerHTML += '<strong>Player 2 Wins This Round</strong>'
 }
-// checkCards()
-}
+
+// function hideWinnerStatus(){
+//     document.querySelector(".text-container.text").style.visibility = "hidden"
+// }
 
 
 
-
-
-
+// document.querySelector(".card-value").style.visibility = "hidden"
 ///---Event Listeners---///
 
 let startButton = document.querySelector("div .start-button")
 startButton.addEventListener('click' , () =>{
-    startGame
-    document.querySelector(".player1-card-pile").innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+    startGame()
+    document.querySelector(".player-one-card-value").innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
 })
 
 //use interpolation to access key's 
@@ -180,19 +190,49 @@ startButton.addEventListener('click' , () =>{
 
 // })
 
+// function showPlayer2Card(){
+//     flipDeckPlayer(player2cards, player2CardsFlipped)
+//     document.querySelector(".card-value").style.visibility = "visible"
+// }
+
 
 //-click event for turning player 2 card over--// 
-player2Deck = document.querySelector(".player2-deck") 
+let player2Deck = document.querySelector(".player2-deck") 
 player2Deck.addEventListener('click',() => {
-     flipDeckPlayer(player2cards, player2CardsFlipped)
+     flipDeckPlayer(player2cards, player2CardsFlipped, "player2")
      console.log("click event player2 Deck")
-    document.querySelector(".player2-card-pile").innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` // this is accessing the value and suit property of the object we created in createDeck function so we could compare points 
-     checkCards()
-
-    // setTimeout(()=> {
-    //     document.querySelector(".player1-card-pile").innerHTML = player1CardsFlipped[0]
+    document.querySelector(".player-two-card-value").innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` // this is accessing the value and suit property of the object we created in createDeck function so we could compare points 
     
-    // } ,1000)
+if (winner = "player2"){
+    // setTimeout(()=> {
+        flipDeckPlayer(player1cards,player1CardsFlipped,"player1")
+        document.querySelector(".player-one-card-value").innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+    
+    // } ,2000)
+}    
+    
+    checkCards()
+     setTimeout(() => {
+       let displayValue = document.querySelectorAll(".card-value")
+      for(let i=0; i < displayValue.length ; i++){
+          displayValue[i].innerHTML=""
+      }
 
-    // console.log("player 1 is going again")
+     },2000)
+    
+    //  showPlayer2Card()
+
+    
+    if(winner === "player1") {
+        // setTimeout(()=> {
+            flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
+            document.querySelector(".player-one-card-value").innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+        
+        // } ,2000)
+    
+        console.log("player 1 is going again")
+        
+    }
+   
 })   
+

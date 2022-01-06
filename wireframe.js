@@ -129,10 +129,18 @@ push to the bottom .push() the cards of the player who looses each round, to the
 
 
     //add actual card images
-  deck.push({
-      suit: suits[i]
-      rank: ranks[x]
-      img: (ULR from API)
+//   deck.push({
+//       suit: suits[i]
+//       rank: ranks[x]
+//       img: (ULR from API)
 
 
-      })
+//       })
+
+//NEXT:
+//need to clear the value and suit from player 2 cards after playe1(computer goes for next turn)
+//need to clear "Player 1 Wins" until the next round 
+
+// count the deck numbers down each turn from 26 
+//when players win cards add those to their deck number
+//get winner text and player2card to work corretly 
