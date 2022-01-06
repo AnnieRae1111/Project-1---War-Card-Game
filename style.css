@@ -72,13 +72,13 @@ justify-content: space-between;
     background-color: lightgreen;
     border: 1px solid black;
     border-radius: 10px;
+}
     
-  
-  
+ 
  
     
 
-}
+
 
 
 .deck {
@@ -106,17 +106,75 @@ justify-content: space-between;
     align-items: center;
     width: 500px;
     height: 500px;
+ 
+}
+
+
+.winner-one-text{
+    width: 500px;
+    height: 50%;
+    font-size: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: purple;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.winner-two-text{
+    width: 500px;
+    height: 50%;
+    font-size: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: purple;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.winner-one-text .go-again{
+    color: black
 }
 
 .header{
     width: 500px;
     text-align: center;
-    font-size: 50px;
+   
+    font-size: 30px;
     background: -webkit-radial-gradient(pink, purple);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+/* #game-winner-text{
+    display:flex;
+    flex-direction: column;
+    width: 500px;
+    height: 500px;
+    justify-content: space-around;
+    /* align-items: center */
+/* } */ 
+
+
+/* .declare-game-winner1, .declare-game-winner2{
+    width: 50%;
+    height:50%;
+    display: inline;
+    font-size: 30px;
+    background: -webkit-radial-gradient(pink, purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+}  */
+
+.hide{
+    display: none;
+}
+
+.hide-round{
+    display:none;
+}
 
 .text {
     grid-column: span 2;

@@ -144,3 +144,19 @@ push to the bottom .push() the cards of the player who looses each round, to the
 // count the deck numbers down each turn from 26 
 //when players win cards add those to their deck number
 //get winner text and player2card to work corretly 
+
+
+//THURSDAY:
+//timing and counting issues, 
+//each time player2 is going, it is decrementinga card from computer pile 
+/// if player1 one wins, it's not automatically making them go again 
+//if both draw the same card, need to say it it is null , player two , your turn now 
+
+
+//stretch goal: 
+//make it WAR when both players draw the same card 
+//make it dark mode version 
+//toggle button for rules ? 
+//sound effectsz/ 
+// API integration 
+//

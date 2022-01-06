@@ -123,101 +123,42 @@ let winner = ""
 function checkCards(){
     if(player1CardsFlipped[0].points > player2CardsFlipped[0].points){ //if playe1 card bigger, push player 2 cards to player 1. show winner text 
         player1CardsFlipped.push(player2CardsFlipped[0])
-        let showWinnerOneText = document.querySelector(".winner-one-text")
-        showWinnerOneText.classList.remove("hide-round")  //showing the text 
-        winner = "player1" 
-        setTimeout(() => {
-            showWinnerOneText.classList.add("hide-round")
+        document.querySelector(".text-container .text").innerHTML += '<strong>Player 1 Wins This Round<br>Player 1 Go Again!</strong>'
+        winner = "player1"
+        // setTimeout(() => {
+        //     flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
+        //     document.querySelector(".player-one-card-value").innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
 
-        }, 2000)   
-
+        // }, 500)
     
     } else if(player2CardsFlipped[0].points > player1CardsFlipped[0].points) {
         player2CardsFlipped.push(player1CardsFlipped[0])
         // document.querySelector(".winner-two-text").innerHTML += '<strong>Player 2 Wins This Round<br>Player 2 Go Again!</strong>'
-       let showWinnerTwoText =  document.querySelector(".winner-two-text")
-       showWinnerTwoText.classList.remove("hide-round")
         winner = "player2"
-        setTimeout(() => {
-            showWinnerTwoText.classList.add("hide-round")
-
-        }, 2000)   
-
-     
-    // } else if(player2CardsFlipped[0].points === player1CardsFlipped[0].points) {
-    //     document.querySelector(".text-container .text").innerHTML += '<strong>It`s a DRAW. Player 2 You Go Again<!!!/strong>'
-
-    // }
-    
+        // setTimeout(() =>{
+        //     flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
+        //     document.querySelector(".player-one-card-value").innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+        // }, 1000)
+   
     }
+    nextRound()
+
 }
 
-// function clearWinnerText(){
-//     setTimeout(()=> {
-
-//     document.querySelector(".winner-two-text").innerHTML = ""
-//     document.querySelector(".winner-one-text").innerHTML = ""  
-
-//     },2000)
-// }
 
 function nextRound() {
-// document.querySelector(".winner-two-text").innerHTML = ""
-// document.querySelector(".text-container .text").innerHTML = ""  
-setTimeout(()=> {
-    let displayValue = document.querySelectorAll(".card-value")
-    for(let i=0; i < displayValue.length ; i++){
-        displayValue[i].innerHTML=""
-    }
-
-},2000)
-
     if(winner === "player1") {
-        // document.querySelector(".text-container .text").innerHTML += '<strong>Player 1 Wins This Round<br>Player 1 Go Again!</strong>'
-        setTimeout(()=> {
-            // document.querySelector(".winner-one-text").innerHTML = ""
-            flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
+        flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
         document.querySelector(".player-one-card-value").innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
 
-        }, 2000)
-
-        
-
     } else if(winner === "player2") {
-    //  document.querySelector(".winner-two-text").innerHTML += '<strong>Player 2 Wins This Round<br>Player 2 Go Again!</strong>'
-     setTimeout(()=> {
-        // document.querySelector(".winner-two-text").innerHTML = ""
-        flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
-    document.querySelector(".player-one-card-value").innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
-
-    },2000)
-     
+     document.querySelector(".winner-two-text").innerHTML += '<strong>Player 2 Wins This Round<br>Player 2 Go Again!</strong>'
+     flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
+        document.querySelector(".player-one-card-value").innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
     }
 
 }
 
-
-// display winner text with a lag if possible 
-
-function declareGameWinner(){ 
-    if ((player1cards.length === 0 && player2cards.length === 0 ) && (player1CardsFlipped.length > player2CardsFlipped.length)){
-       let gameWinner1 = document.querySelector(".declare-game-winner1")
-        gameWinner1.classList.remove("hide")
-    } else if(player1cards.length === 0 && player2cards.length === 0 && player2CardsFlipped.length > player1CardsFlipped.length){
-        let gameWinner2 = document.querySelector(".declare-game-winner2")
-        gameWinner2.classList.remove("hide") 
-    
-    }
-    
-    // compare arrays when both decks are = 0
-
-}
-
-//show and hide class on the div, 
-    //remove class 
-    // 
-    //hard code the HTML text 
-    //css class (hide) 
 
 ///---Event Listeners---///
 
@@ -227,6 +168,15 @@ startButton.addEventListener('click' , () =>{
     document.querySelector(".player-one-card-value").innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
 })
 
+//use interpolation to access key's 
+
+
+// function showPlayer2Card(){
+//     flipDeckPlayer(player2cards, player2CardsFlipped)
+//     document.querySelector(".card-value").style.visibility = "visible"
+// }
+
+
 //-click event for turning player 2 card over--// 
 let player2Deck = document.querySelector(".player2-deck") 
 
@@ -234,13 +184,28 @@ player2Deck.addEventListener('click',() => {
     flipDeckPlayer(player2cards, player2CardsFlipped, "player2")
     console.log("click event player2 Deck")
     document.querySelector(".player-two-card-value").innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` // this is accessing the value and suit property of the object we created in createDeck function so we could compare points 
-    
     checkCards() 
-
-    nextRound()
+    setTimeout(()=> {
+        let displayValue = document.querySelectorAll(".card-value")
+        for(let i=0; i < displayValue.length ; i++){
+            displayValue[i].innerHTML=""
+        }
+       
+    },1000)
     // clearWinnerText()
-    declareGameWinner()
+    // nextRound()
 
+    // document.querySelector(".winner-two-text").innerHTML = ""
+    // document.querySelector(".text-container .text").innerHTML = ""  
 
 })   
 
+
+
+// function clearTextAndValues(){
+  
+     
+     
+        //clearing card values for both players 
+
+// }
