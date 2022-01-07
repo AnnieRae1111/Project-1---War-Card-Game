@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="style.css"/>    
 </head>
 <body>
+
+    <div class ="header-container">
    
-       
+</div>  
 
 <div id="container">
-    <h3 class="header">LET'S PLAY WAR!!</h3> 
-    <div class ="player1">
+    <h3 class="header">LET'S PLAY WAR!!</h3>  
+    <div class="computer-player">Player 1 : COMPUTER</div>
+   
+    <div class ="player1"> 
    <div class="player1-deck deck">26</div>
    <div class="player1-card-pile pile">
     <div class ="player-one-card-value card-value"></div>
@@ -23,17 +27,18 @@
 </div>
 <div class ="text-container">
     <div class="text"></div>
-    <div class ="winner-one-text hide-round"><strong>Player 1 Wins This Round<br><span class="go-again">Player 1 Go Again!</span></strong></div>
-    <div class="winner-two-text hide-round"><strong>Player 2 Wins This Round<br><span class="go-again">Player 2 Go Again!</span></strong></div>
-    <div class= "draw-text hide-round"><strong>It's A Draw!<span class="go-again">Player 2 Go Again!</span></strong></div>
+    <div class ="winner-one-text hide-round"><strong>Player 1 Wins This Round<br><span class="go-again">Both Players Discard Again!</span></strong></div>
+    <div class="winner-two-text hide-round"><strong>Player 2 Wins This Round<br><span class="go-again">Both Players Discard Again!</span></strong></div>
+    <div class= "draw-text hide-round"><strong>It's A Draw!<br><span class="go-again">Player 2 Go Again!</span></strong></div>
     <div class ="declare-game-winner1 hide"> Player 1 wins</div>
     <div class ="declare-game-winner2 hide"> Player 2 Wins</div>
     
 </div>
-  
+<div class="person">Player 2 : YOU </div>
    <div class="player2">
    <div class="player2-deck deck">26</div>
    <div class="player2-card-pile pile">
+      
        <div class ="player-two-card-value card-value"></div>
    </div>
 </div>
