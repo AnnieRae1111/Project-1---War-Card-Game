@@ -82,6 +82,7 @@ justify-content: space-between;
 .score1{
     display:flex;
     text-align:center;
+    font-family: 'Roboto', sans-serif;
 
    
 }
@@ -110,6 +111,7 @@ justify-content: space-between;
 width: 200px;
 margin-bottom: 15px;
 text-transform: uppercase;
+font-family: 'Roboto', sans-serif;
 
 
 }
@@ -206,10 +208,10 @@ text-transform: uppercase;
     font-family:'Roboto', sans-serif;
     width: 500px;
     height: 50%;
-    font-size: 25px;
+    font-size: 35px;
     text-align: center;
     text-transform: uppercase;
-    color: #8C3565;
+    color: #68B1D3;
     align-items: center;
     justify-content: space-between;
 
