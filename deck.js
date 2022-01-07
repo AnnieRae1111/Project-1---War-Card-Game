@@ -30,6 +30,10 @@ let showWinnerTwoText =  document.querySelector(".winner-two-text")
 function resetDeck(){
     masterDeck.splice(0,masterDeck.length)
     mixedDeck.splice(0,mixedDeck.length)
+    // player1cards.splice(0,player1cards.length)
+    // player2cards.splice(0,player2cards.length)
+
+    console.log("reset deck")
     // console.log(masterDeck)
     // console.log(mixedDeck)
 }    //reseting the decks. Include this in startGame function so I always start with fresh deck)
@@ -94,7 +98,6 @@ player2cards= (shuffleDeck.slice(-half))
 
 
 function startGame(){   //eventListner // Click start button // 
-resetDeck()
 createDeck()
 shuffleTheDeck()
 mixedDeck.push(...shuffleDeck) //spread operator pushes new shuffleDeck into mixedDeck
@@ -102,6 +105,7 @@ splitDecks()
 // console.log(mixedDeck) 
 flipDeckPlayer(player1cards, player1CardsFlipped, "player1") // this will automatically fire 
 // flipDeckPlayer1()
+resetDeck()
 
 
 }
@@ -199,12 +203,14 @@ function nextRound() {
 
 function declareGameWinner(){ 
     if ((player1cards.length === 0 && player2cards.length === 0 ) && (player1CardsFlipped.length > player2CardsFlipped.length)){
+        showWinnerOneText.classList.add("hide-round")
        setTimeout(() => {
         let gameWinner1 = document.querySelector(".declare-game-winner1")
         gameWinner1.classList.remove("hide")
 
        },2500)
     } else if(player1cards.length === 0 && player2cards.length === 0 && player2CardsFlipped.length > player1CardsFlipped.length){
+        showWinnerTwoText.classList.add("hide-round")
         setTimeout(() =>{
         let gameWinner2 = document.querySelector(".declare-game-winner2")
         gameWinner2.classList.remove("hide") 
@@ -218,8 +224,18 @@ function declareGameWinner(){
 
 }
 
+function startOver(){
+    location.reload();
+}
+
 
 ///---Event Listeners---///
+
+let resetButton = document.querySelector(".restart")
+resetButton.addEventListener('click' , () => {
+    startGame()
+    startOver()
+})
 
 let startButton = document.querySelector("div .start-button")
 startButton.addEventListener('click' , () =>{
