@@ -1,19 +1,28 @@
+/* colors:  mint green: #B8D9C6
+            sage green: #9FBFA7 
+            darker green:#81A684
+            darker tan: #D9C3A9
+            ligther tan: #F2E2CE */
+
+
 body {  
   
     display:flex;
     flex-direction: column;
-    /* grid-template-columns: repeat(2, 160px);   */
-         /* create grid of 2 columns for where the cards will go  */
-    /* grid-template-rows: 224px 48px 224px 48px; */
-    /* gap: 10px; */
     justify-content: center;
     padding-top: 25px;
     align-items: center;
- 
-    /* background-image: radial-gradient(gray, white) */
+    background-image: url("https://i.imgur.com/SD9f3Se.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+  
     
     
 }
+
+
+
 
 .page-container{
     margin: 0 auto;
@@ -51,7 +60,8 @@ justify-content: space-between;
     display:flex;  
     height:100%;
     width: 40%;
-    border: 1px solid;
+    border: 2px solid white;
+    background-color: #D9C3A9;
     border-radius: 10px;
     align-items: center;
     justify-content: center ;
@@ -72,8 +82,16 @@ justify-content: space-between;
 .score1{
     display:flex;
     text-align:center;
-    margin-right: 40px;
+
    
+}
+
+.score{
+    margin-right: 30px;
+}
+
+.score1{
+    margin-right: 40px;
 }
 
 /* .card-value{
@@ -92,10 +110,17 @@ justify-content: space-between;
 width: 200px;
 margin-bottom: 15px;
 text-transform: uppercase;
-margin-left: 40px;
+
 
 }
 
+.computer-player{
+    margin-left: 4px;
+}
+
+.person{
+    margin-left: 40px;
+}
 
 
 /* .player2-card-pile.pile {
@@ -115,33 +140,50 @@ margin-left: 40px;
 
 .restart,
 .start-button {
-    /* grid-column: span 2 ; */
+    font-family:'Roboto', sans-serif;
     height: 40%;
     width: 40%;
     padding: 1rem;
-    background-color: lightgreen;
-    border: 1px solid black;
+    background-color: #D9C3A9;
+    border: 3px solid white;
+    /* border: none; */
     border-radius: 10px;
+    box-shadow: 0 9px #999;
     
 }
     
  
  
-    
+
+.start-button:hover{background-color: #D99CB2}
+.restart:hover {background-color: #D99CB2}
+
+.start-button:active {
+  background-color:#D99CB2;
+  box-shadow: 0 5px #8C3565;
+  transform: translateY(4px);
+}
 
 
-
+.restart:active {
+    background-color: #D99CB2;
+    box-shadow: 0 5px #8C3565;
+    transform: translateY(4px);
+  }
+  
+  
 
 .deck {
     height:100%;
     width: 40%;
-    border: 1px solid black;
+    border: 2px solid white;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 35px;
     border-radius: 10px;
-    background-image: linear-gradient(to right, lightblue, blue);
+    background: #9FBFA7;
+    /* background-image: linear-gradient(to right, lightblue, blue); */
 }
 
 .player2-deck {
@@ -161,12 +203,13 @@ margin-left: 40px;
 }
 
 .declare-game-winner1, .declare-game-winner2{
+    font-family:'Roboto', sans-serif;
     width: 500px;
     height: 50%;
     font-size: 25px;
     text-align: center;
     text-transform: uppercase;
-    color: rgb(0, 105, 128);
+    color: #8C3565;
     align-items: center;
     justify-content: space-between;
 
@@ -175,12 +218,13 @@ margin-left: 40px;
 
 
 .winner-one-text, .winner-two-text, .draw-text{
+    font-family:'Roboto', sans-serif;
     width: 500px;
     height: 50%;
     font-size: 25px;
     text-align: center;
     text-transform: uppercase;
-    color: purple;
+    color: black;
     align-items: center;
     justify-content: space-between;
 
@@ -200,7 +244,7 @@ margin-left: 40px;
 
 
 .go-again{
-    color: black
+    color: black;
 }
 
 
@@ -215,10 +259,11 @@ align-items: center;
 }
 
 .header{
+    font-family: 'Roboto', sans-serif;
     width: 500px;
     text-align: center;
-    font-size: 30px;
-    color: purple;
+    font-size: 35px;
+    color: black;
     /* background: -webkit-radial-gradient(pink, purple);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent; */
