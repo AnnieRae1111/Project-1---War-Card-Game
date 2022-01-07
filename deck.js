@@ -129,7 +129,7 @@ let player2score = document.querySelector(".player2-score")
 
 function checkCards(){
     if(player1CardsFlipped[0].points > player2CardsFlipped[0].points){ //if playe1 card bigger, push player 2 cards to player 1. show winner text 
-        player1CardsFlipped.push(player2CardsFlipped[0])
+        player1CardsFlipped.push(player2CardsFlipped[0]) //adding player2CardsFlipped index[0] to player1CardsFlipped pile 
         player2CardsFlipped.shift()
         player1score.innerHTML = player1CardsFlipped.length
         showWinnerOneText.classList.remove("hide-round")  //showing the text 
@@ -153,10 +153,12 @@ function checkCards(){
 
      
      } else if(player2CardsFlipped[0].points === player1CardsFlipped[0].points) {
+        player1CardsFlipped.push(player1CardsFlipped[0])
+        player2CardsFlipped.push(player2CardsFlipped[0])
          let showDrawText = document.querySelector(".draw-text")
-         showDrawText.classList.remove("hide-round")
+         showDrawText.classList.remove("hide-round") //showing the text 
          setTimeout(() => {
-            showDrawText.classList.add("hide-round")
+            showDrawText.classList.add("hide-round") // hiding the text
 
         }, 2500)  
       
@@ -201,13 +203,13 @@ function declareGameWinner(){
         let gameWinner1 = document.querySelector(".declare-game-winner1")
         gameWinner1.classList.remove("hide")
 
-       },1500)
+       },2500)
     } else if(player1cards.length === 0 && player2cards.length === 0 && player2CardsFlipped.length > player1CardsFlipped.length){
         setTimeout(() =>{
         let gameWinner2 = document.querySelector(".declare-game-winner2")
         gameWinner2.classList.remove("hide") 
 
-        },1500)
+        },2500)
         
     
     }
