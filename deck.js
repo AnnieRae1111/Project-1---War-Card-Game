@@ -24,6 +24,7 @@ let playerTwoCardValue =document.querySelector(".player-two-card-value")
 let playerOneCardValue = document.querySelector(".player-one-card-value")
 let showWinnerOneText = document.querySelector(".winner-one-text")
 let showWinnerTwoText =  document.querySelector(".winner-two-text")
+let displayValue = document.querySelectorAll(".card-value")
 
 /*----- functions -----*/
 
@@ -168,11 +169,11 @@ function checkCards(){
       
     }
     setTimeout(()=> {
-        let displayValue = document.querySelectorAll(".card-value")
+        // let displayValue = document.querySelectorAll(".card-value")
         for(let i=0; i < displayValue.length ; i++){
             displayValue[i].innerHTML=""             //clearing the card values after winner is chsen
         }
-    
+     
     },2000)
   
 }
@@ -204,17 +205,21 @@ function nextRound() {
 function declareGameWinner(){ 
     if ((player1cards.length === 0 && player2cards.length === 0 ) && (player1CardsFlipped.length > player2CardsFlipped.length)){
         showWinnerOneText.classList.add("hide-round")
+       
        setTimeout(() => {
         let gameWinner1 = document.querySelector(".declare-game-winner1")
         gameWinner1.classList.remove("hide")
+        displayValue.innerHTML="" 
 
        },2500)
     } else if(player1cards.length === 0 && player2cards.length === 0 && player2CardsFlipped.length > player1CardsFlipped.length){
         showWinnerTwoText.classList.add("hide-round")
+       
         setTimeout(() =>{
         let gameWinner2 = document.querySelector(".declare-game-winner2")
         gameWinner2.classList.remove("hide") 
-
+        
+        
         },2500)
         
     
