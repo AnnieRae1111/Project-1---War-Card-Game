@@ -21,3 +21,5 @@ To reset the game at anytime press the "Reset Game Button"
 I would like to add a function for declaring war, when both players discard the same card. 
 This would result in both players putting 1 card face down, and 1 card face up. Who ever has the higher face up card wins the "War" and takes all four cards (their 2 cards and the 2 cards of the opponent)
 The game then continues like normal. 
+
+![alt text](https://i.imgur.com/ih1wVnP.jpg)
