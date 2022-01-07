@@ -1,4 +1,10 @@
 
+
+
+/*----- cached element references -----*/
+
+
+
 /*----- constants -----*/
 const SUITS = ['♥','♦','♠', '♣'] 
 const VALUES= ['A','2', '3', '4','5','6','7','8', '9','10','J','Q','K']
@@ -25,11 +31,15 @@ let displayValue = document.querySelectorAll(".card-value")
 function resetDeck(){
     masterDeck.splice(0,masterDeck.length)
     mixedDeck.splice(0,mixedDeck.length)
-    
-   
-}    
+    // player1cards.splice(0,player1cards.length)
+    // player2cards.splice(0,player2cards.length)
 
+    console.log("reset deck")
+    // console.log(masterDeck)
+    // console.log(mixedDeck)
+}    //reseting the decks. Include this in startGame function so I always start with fresh deck)
 
+// resetDeck()
 
 let points = {}
 function createDeck(){
@@ -41,10 +51,11 @@ function createDeck(){
                         value: VALUES[i],
                         suit: suit,
                         points: i+1
-                    
+                        // img: `https://deckofcards.api.com/static/img/${value[i]} ${suits[i]}`
                     }
-                   
-                    masterDeck.push(card) 
+                    // console.log(points)
+                    // console.log(card)
+                    masterDeck.push(card) //(pushing each card, back to the masterDeck array)
 
             }
 
@@ -52,7 +63,11 @@ function createDeck(){
         }
     )
 }
+// createDeck()
 
+
+
+ //copying the masterDeck into the shuffleDeck, so we can then shuffle it. 
 
 
 function shuffleTheDeck(){
@@ -64,34 +79,51 @@ function shuffleTheDeck(){
         shuffleDeck[i]=shuffleDeck[randomIndex]
         shuffleDeck[randomIndex] = x
         shuffleDeck[randomIndex] = tempCard
+        // console.log(shuffleDeck)how to check if this is working? 
+
     }
 }
 
+// shuffleTheDeck()
+
 
 function splitDecks(){
-    const half = Math.ceil(shuffleDeck.length / 2);    
-    player1cards= (shuffleDeck.slice(0, half))
-    player2cards= (shuffleDeck.slice(-half))
+const half = Math.ceil(shuffleDeck.length / 2);    
+player1cards= (shuffleDeck.slice(0, half))
+player2cards= (shuffleDeck.slice(-half))
+// console.log(player1cards)
+// console.log(player2cards)
 }
 
+// splitDecks()
 
-function startGame(){  
-    createDeck()
-    shuffleTheDeck()
-    mixedDeck.push(...shuffleDeck) 
-    flipDeckPlayer(player1cards, player1CardsFlipped, "player1")
-    resetDeck()
+
+function startGame(){   //eventListner // Click start button // 
+createDeck()
+shuffleTheDeck()
+mixedDeck.push(...shuffleDeck) //spread operator pushes new shuffleDeck into mixedDeck
+splitDecks()
+// console.log(mixedDeck) 
+flipDeckPlayer(player1cards, player1CardsFlipped, "player1") // this will automatically fire 
+// flipDeckPlayer1()
+resetDeck()
+
+
 }
+// startGame()
 
 
 
-
-function flipDeckPlayer(playerCards, playerCardsFlipped, player){   
+function flipDeckPlayer(playerCards, playerCardsFlipped, player){   //taking card away from deck 
     if (playerCards.length > 0){
         playerCardsFlipped.unshift(playerCards[0])
         playerCards.shift()
-        document.querySelector(`.${player}-deck`).innerHTML = playerCards.length 
+        document.querySelector(`.${player}-deck`).innerHTML = playerCards.length //counting down each deck when clicked
+
         }
+        // console.log(playerCards)
+        console.log(playerCardsFlipped, player)
+    
     }
 
 
@@ -101,11 +133,11 @@ let player1score = document.querySelector(".computer-score")
 let player2score = document.querySelector(".player2-score")
 
 function checkCards(){
-    if(player1CardsFlipped[0].points > player2CardsFlipped[0].points){  
-        player1CardsFlipped.push(player2CardsFlipped[0]) 
+    if(player1CardsFlipped[0].points > player2CardsFlipped[0].points){ //if playe1 card bigger, push player 2 cards to player 1. show winner text 
+        player1CardsFlipped.push(player2CardsFlipped[0]) //adding player2CardsFlipped index[0] to player1CardsFlipped pile 
         player2CardsFlipped.shift()
         player1score.innerHTML = player1CardsFlipped.length
-        showWinnerOneText.classList.remove("hide-round") 
+        showWinnerOneText.classList.remove("hide-round")  //showing the text 
         winner = "player1" 
         setTimeout(() => {
             showWinnerOneText.classList.add("hide-round")
@@ -130,16 +162,17 @@ function checkCards(){
         player2CardsFlipped.push(player2CardsFlipped[0])
          let showDrawText = document.querySelector(".draw-text")
          winner = "draw"
-         showDrawText.classList.remove("hide-round") 
+         showDrawText.classList.remove("hide-round") //showing the text 
          setTimeout(() => {
-            showDrawText.classList.add("hide-round") 
+            showDrawText.classList.add("hide-round") // hiding the text
 
         }, 2500)  
       
     }
     setTimeout(()=> {
+        // let displayValue = document.querySelectorAll(".card-value")
         for(let i=0; i < displayValue.length ; i++){
-            displayValue[i].innerHTML=""           
+            displayValue[i].innerHTML=""             //clearing the card values after winner is chsen
         }
      
     },2000)
@@ -188,7 +221,7 @@ function declareGameWinner(){
         displayValue.innerHTML="" 
 
        },2500)
-    }  else if(player1cards.length === 0 && player2cards.length === 0 && player2CardsFlipped.length > player1CardsFlipped.length){
+    } else if(player1cards.length === 0 && player2cards.length === 0 && player2CardsFlipped.length > player1CardsFlipped.length){
         showWinnerTwoText.classList.add("hide-round")
        
         setTimeout(() =>{
@@ -224,15 +257,17 @@ startButton.addEventListener('click' , () =>{
     playerOneCardValue.innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
 })
 
-
+//-click event for turning player 2 card over--// 
 let player2Deck = document.querySelector(".player2-deck") 
+
 player2Deck.addEventListener('click',() => {
     flipDeckPlayer(player2cards, player2CardsFlipped, "player2")
     console.log("click event player2 Deck")
-    playerTwoCardValue.innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` 
+    playerTwoCardValue.innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` // this is accessing the value and suit property of the object we created in createDeck function so we could compare points 
     checkCards()
     nextRound()
     declareGameWinner()
+
 
 })   
 
