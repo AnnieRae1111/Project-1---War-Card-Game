@@ -161,6 +161,7 @@ function checkCards(){
         player1CardsFlipped.push(player1CardsFlipped[0])
         player2CardsFlipped.push(player2CardsFlipped[0])
          let showDrawText = document.querySelector(".draw-text")
+         winner = "draw"
          showDrawText.classList.remove("hide-round") //showing the text 
          setTimeout(() => {
             showDrawText.classList.add("hide-round") // hiding the text
@@ -197,6 +198,14 @@ function nextRound() {
 
     },3000)
      
+    } else if (winner === "draw"){
+     flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
+     setTimeout(()=> {
+     playerOneCardValue.innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+
+    },3000)
+     
+
     }
 
 }
