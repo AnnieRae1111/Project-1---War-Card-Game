@@ -154,6 +154,8 @@ push to the bottom .push() the cards of the player who looses each round, to the
 
 
 //stretch goal: 
+// add a counter to the flipDeck pile 
+// add Plyaer 1 and Player 2 in CSS/HTMl 
 //make it WAR when both players draw the same card 
 //make it dark mode version 
 //toggle button for rules ? 

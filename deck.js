@@ -114,6 +114,7 @@ function flipDeckPlayer(playerCards, playerCardsFlipped, player){   //taking car
         playerCardsFlipped.unshift(playerCards[0])
         playerCards.shift()
         document.querySelector(`.${player}-deck`).innerHTML = playerCards.length //counting down each deck when clicked
+
         }
         // console.log(playerCards)
         console.log(playerCardsFlipped, player)
@@ -123,9 +124,14 @@ function flipDeckPlayer(playerCards, playerCardsFlipped, player){   //taking car
 
 
 let winner = ""
+let player1score = document.querySelector(".computer-score")
+let player2score = document.querySelector(".player2-score")
+
 function checkCards(){
     if(player1CardsFlipped[0].points > player2CardsFlipped[0].points){ //if playe1 card bigger, push player 2 cards to player 1. show winner text 
         player1CardsFlipped.push(player2CardsFlipped[0])
+        player2CardsFlipped.shift()
+        player1score.innerHTML = player1CardsFlipped.length
         showWinnerOneText.classList.remove("hide-round")  //showing the text 
         winner = "player1" 
         setTimeout(() => {
@@ -136,7 +142,8 @@ function checkCards(){
 
     } else if(player2CardsFlipped[0].points > player1CardsFlipped[0].points) {
         player2CardsFlipped.push(player1CardsFlipped[0])
-
+        player1CardsFlipped.shift()
+        player2score.innerHTML = player2CardsFlipped.length
        showWinnerTwoText.classList.remove("hide-round")
         winner = "player2"
         setTimeout(() => {
@@ -170,6 +177,7 @@ function nextRound() {
 
     if(winner === "player1") {
         flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
+        console.log("next round")
          setTimeout(()=> {
         playerOneCardValue.innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
 
@@ -226,15 +234,6 @@ player2Deck.addEventListener('click',() => {
     playerTwoCardValue.innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` // this is accessing the value and suit property of the object we created in createDeck function so we could compare points 
     
     checkCards() 
-
-    // setTimeout(()=> {
-    //     let displayValue = document.querySelectorAll(".card-value")
-    //     for(let i=0; i < displayValue.length ; i++){
-    //         displayValue[i].innerHTML=""
-    //     }
-    
-    // },2000)
-    
 
     nextRound()
     declareGameWinner()
