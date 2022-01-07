@@ -23,3 +23,5 @@ This would result in both players putting 1 card face down, and 1 card face up. 
 The game then continues like normal. 
 
 ![alt text](https://i.imgur.com/ih1wVnP.jpg)
+
+Link to game: https://annierae1111.github.io/War/
