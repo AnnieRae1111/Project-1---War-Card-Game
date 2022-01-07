@@ -173,7 +173,7 @@ function nextRound() {
          setTimeout(()=> {
         playerOneCardValue.innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
 
-        }, 2000)
+        }, 3000)
 
     } else if(winner === "player2") {
      flipDeckPlayer(player1cards,player1CardsFlipped, "player1")

@@ -1,15 +1,23 @@
-body {
-    margin: 0;
-    display:grid;
-    grid-template-columns: repeat(2, 160px);  
+body {  
+  
+    display:flex;
+    flex-direction: column;
+    /* grid-template-columns: repeat(2, 160px);   */
          /* create grid of 2 columns for where the cards will go  */
-    grid-template-rows: 224px 48px 224px 48px;
-    gap: 10px;
+    /* grid-template-rows: 224px 48px 224px 48px; */
+    /* gap: 10px; */
     justify-content: center;
     padding-top: 50px;
+    align-items: center;
+ 
     /* background-image: radial-gradient(gray, white) */
     
     
+}
+
+.page-container{
+    margin: 0 auto;
+  
 }
 
 #container{
@@ -174,14 +182,15 @@ text-transform: uppercase;
 }
 
 
-/* .header-container{
- height: 300px;   
+.header-container{
+ /* height: 300px;  */
+ width: 500px;   
 display: flex;
 flex-direction: column;
-height: 100vh;
+/* height: 100vh; */
 justify-content: space-between;
 align-items: center;
-} */
+}
 
 .header{
     width: 500px;
