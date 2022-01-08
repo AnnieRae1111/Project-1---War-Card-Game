@@ -1,5 +1,4 @@
-
-
+//*THIS WORKS**
 
 /*----- cached element references -----*/
 
@@ -253,6 +252,7 @@ player2Deck.addEventListener('click',() => {
     flipDeckPlayer(player2cards, player2CardsFlipped, "player2")
     console.log("click event player2 Deck")
     playerTwoCardValue.innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` 
+    checkCards()
     nextRound()
     declareGameWinner()
 })   
