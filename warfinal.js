@@ -44,7 +44,6 @@ function createDeck(){
     SUITS.flatMap(
         (suit) => { 
             for(i=0; i< VALUES.length; i++){
-                     
                     let card = {
                         value: VALUES[i],
                         suit: suit,
@@ -130,7 +129,7 @@ function checkCards(){
         player1CardsFlipped.push(player2CardsFlipped[0])  
         player2CardsFlipped.shift()
         player1score.innerHTML = player1CardsFlipped.length
-        showWinnerOneText.classList.remove("hide-round")  
+        showWinnerOneText.classList.remove("hide-round") 
         setTimeout(() => {
             showWinnerOneText.classList.add("hide-round")
 
@@ -253,6 +252,7 @@ player2Deck.addEventListener('click',() => {
     flipDeckPlayer(player2cards, player2CardsFlipped, "player2")
     console.log("click event player2 Deck")
     playerTwoCardValue.innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` 
+    checkCards()
     nextRound()
     declareGameWinner()
 })   

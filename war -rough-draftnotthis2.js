@@ -1,3 +1,5 @@
+//**getting a bug with this file not sure why */
+
 
 /*----- constants -----*/
 const SUITS = ['♥','♦','♠', '♣'] 
