@@ -30,9 +30,6 @@ let displayValue = document.querySelectorAll(".card-value")
 function resetDeck(){
     masterDeck.splice(0,masterDeck.length)
     mixedDeck.splice(0,mixedDeck.length)
- 
-
-    console.log("reset deck")
     
 }   
 
@@ -43,7 +40,6 @@ function createDeck(){
     SUITS.flatMap(
         (suit) => { 
             for(i=0; i< VALUES.length; i++){
-                     
                     let card = {
                         value: VALUES[i],
                         suit: suit,
@@ -84,21 +80,21 @@ function shuffleTheDeck(){
 
 
 function splitDecks(){
-const half = Math.ceil(shuffleDeck.length / 2);    
-player1cards= (shuffleDeck.slice(0, half))
-player2cards= (shuffleDeck.slice(-half))
+    const half = Math.ceil(shuffleDeck.length / 2);    
+    player1cards= (shuffleDeck.slice(0, half))
+    player2cards= (shuffleDeck.slice(-half))
 
 }
 
 
 
 function startGame(){   
-createDeck()
-shuffleTheDeck()
-mixedDeck.push(...shuffleDeck)
-splitDecks()
-flipDeckPlayer(player1cards, player1CardsFlipped, "player1") 
-resetDeck()
+    createDeck()
+    shuffleTheDeck()
+    mixedDeck.push(...shuffleDeck)
+    splitDecks()
+    flipDeckPlayer(player1cards, player1CardsFlipped, "player1") 
+    resetDeck()
 
 
 }
@@ -111,7 +107,6 @@ function flipDeckPlayer(playerCards, playerCardsFlipped, player){
         playerCardsFlipped.unshift(playerCards[0])
         playerCards.shift()
         document.querySelector(`.${player}-deck`).innerHTML = playerCards.length 
-
         }
         
     
@@ -132,7 +127,6 @@ function checkCards(){
         showWinnerOneText.classList.remove("hide-round")  
         setTimeout(() => {
             showWinnerOneText.classList.add("hide-round")
-
         }, 2500)   
 
 
