@@ -1,7 +1,7 @@
 ---> War: The Card Game 
 This version of war is a little bit more mild than the regular version in that when both players draw the same card, it is counted as a draw and they both keep their cards. Then both players discard a card again and the game continues. 
 This game is played by two players. 
-The objective of the game is to win more cards than your opponent once both card decks reach 0
+The objective of the game is to win more cards than your opponent once both card decks reach 0.
 The deck is divided evenly at the beginning and each turn results in one card being taken from the deck. 
 The player whose card is higher, wins that round and keeps their card as well as the opponents card. 
 Once both players run out of cards, whoever has more cards in their card pile wins the game. 
@@ -21,6 +21,7 @@ To reset the game at anytime press the "Reset Game Button"
 I would like to add a function for declaring war, when both players discard the same card. 
 This would result in both players putting 1 card face down, and 1 card face up. Who ever has the higher face up card wins the "War" and takes all four cards (their 2 cards and the 2 cards of the opponent)
 The game then continues like normal. 
+I would also like to bring in actual cards with the use of an API. 
 
 ![alt text](https://i.imgur.com/ih1wVnP.jpg)
 
