@@ -5,8 +5,9 @@
 
 
 /*----- constants -----*/
-const SUITS = ['♥','♦','♠', '♣'] 
-const VALUES= ['A','2', '3', '4','5','6','7','8', '9','10','J','Q','K']
+// const SUITS = ['♥','♦','♠', '♣'] 
+const SUITS =['S','D','C','H']
+const VALUES= ['A','2', '3', '4','5','6','7','8', '9','0','J','Q','K']
 
 /*----- app's state (variables) -----*/
 let masterDeck = []
@@ -19,8 +20,8 @@ let player1CardsFlipped =[]
 let player2CardsFlipped=[]
 
 
-let playerTwoCardValue =document.querySelector(".player-two-card-value")
-let playerOneCardValue = document.querySelector(".player-one-card-value")
+let playerTwoCardValue =document.querySelector(".card-image-two")
+let playerOneCardValue = document.querySelector(".card-image")
 let showWinnerOneText = document.querySelector(".winner-one-text")
 let showWinnerTwoText =  document.querySelector(".winner-two-text")
 let displayValue = document.querySelectorAll(".card-value")
@@ -43,7 +44,9 @@ function createDeck(){
                     let card = {
                         value: VALUES[i],
                         suit: suit,
-                        points: i+1
+                        points: i+1,
+                        image: `https://deckofcardsapi.com/static/img/${VALUES[i]}${suit}.png`
+                        
                         
                     }
                     
@@ -125,6 +128,7 @@ function checkCards(){
         player2CardsFlipped.shift()
         player1score.innerHTML = player1CardsFlipped.length
         showWinnerOneText.classList.remove("hide-round")  
+        winner = "player1"
         setTimeout(() => {
             showWinnerOneText.classList.add("hide-round")
         }, 2500)   
@@ -154,10 +158,13 @@ function checkCards(){
     
     }
     setTimeout(()=> {
+        let player2CardImage = document.querySelector(".card-image-two")
+        player2CardImage.src = "https://via.placeholder.com/200x240.png?text=Pick+A+Card"
 
-        for(let i=0; i < displayValue.length ; i++){
-            displayValue[i].innerHTML=""             
-        }
+        // for(let i=1; i < displayValue.length ; i++){
+        //     displayValue[i].innerHTML=""   
+        
+        // }
     
     },2000)
 
@@ -171,21 +178,23 @@ function nextRound() {
         flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
         console.log("next round")
         setTimeout(()=> {
-        playerOneCardValue.innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+        playerOneCardValue.src = player1CardsFlipped[0].image
 
         }, 3000)
 
     } else if(winner === "player2") {
         flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
         setTimeout(()=> {
-        playerOneCardValue.innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+        // playerOneCardValue.innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+        playerOneCardValue.src = player1CardsFlipped[0].image
 
         },3000)
     
     } else if (winner === "draw"){
         flipDeckPlayer(player1cards,player1CardsFlipped, "player1")
         setTimeout(()=> {
-        playerOneCardValue.innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+        // playerOneCardValue.innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+        playerOneCardValue.src = player1CardsFlipped[0].image
 
         },3000)
     
@@ -202,7 +211,7 @@ function declareGameWinner(){
         setTimeout(() => {
         let gameWinner1 = document.querySelector(".declare-game-winner1")
         gameWinner1.classList.remove("hide")
-        displayValue.innerHTML="" 
+        // displayValue.innerHTML="" 
 
         },2500)
     } else if(player1cards.length === 0 && player2cards.length === 0 && player2CardsFlipped.length > player1CardsFlipped.length){
@@ -237,7 +246,8 @@ resetButton.addEventListener('click' , () => {
 let startButton = document.querySelector("div .start-button")
 startButton.addEventListener('click' , () =>{
     startGame()
-    playerOneCardValue.innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+    // playerOneCardValue.innerHTML = `${player1CardsFlipped[0].value} ${player1CardsFlipped[0].suit}`
+    playerOneCardValue.src = player1CardsFlipped[0].image
 })
 
 let player2Deck = document.querySelector(".player2-deck") 
@@ -245,7 +255,8 @@ let player2Deck = document.querySelector(".player2-deck")
 player2Deck.addEventListener('click',() => {
     flipDeckPlayer(player2cards, player2CardsFlipped, "player2")
     console.log("click event player2 Deck")
-    playerTwoCardValue.innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` 
+    // playerTwoCardValue.innerHTML = `${player2CardsFlipped[0].value} ${player2CardsFlipped[0].suit}` 
+    playerTwoCardValue.src=player2CardsFlipped[0].image
     checkCards()
     nextRound()
     declareGameWinner()

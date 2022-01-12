@@ -4,6 +4,11 @@
             darker tan: #D9C3A9
             ligther tan: #F2E2CE */
 
+            .card-image, 
+            .card-image-two{
+                height:240px;
+                width:200px;
+            }
 
             body {  
                 display:flex;
