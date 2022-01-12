@@ -124,6 +124,7 @@ function checkCards(){
         player1CardsFlipped.push(player2CardsFlipped[0])  
         player2CardsFlipped.shift()
         player1score.innerHTML = player1CardsFlipped.length
+        winner ="player1"
         showWinnerOneText.classList.remove("hide-round")  
         setTimeout(() => {
             showWinnerOneText.classList.add("hide-round")
