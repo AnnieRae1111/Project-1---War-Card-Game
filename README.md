@@ -23,6 +23,6 @@ This would result in both players putting 1 card face down, and 1 card face up. 
 The game then continues like normal. 
 I would also like to bring in actual cards with the use of an API. 
 
-![alt text](https://i.imgur.com/ih1wVnP.jpg)
+![alt text]([Imgur](https://i.imgur.com/lJtd8CL.png))
 
 Link to game: https://annierae1111.github.io/War/
